@@ -1,4 +1,4 @@
-// Assignment Class
+// Assignment Class using ES6 class notation
 class Assignment {
   constructor(assignmentName) {
     this.assignmentName = assignmentName;
@@ -228,28 +228,7 @@ class ClassList {
   }
 }
 
-// Export classes for Node.js
+// Export for Node.js
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { Assignment, Observer, Student, ClassList };
-}
-
-// === Example Usage ===
-if (typeof require !== 'undefined' && require.main === module) {
-  const observer = new Observer();
-  const classList = new ClassList(observer);
-
-  const s1 = new Student("Alice Smith", "alice@example.com", observer);
-  const s2 = new Student("Bob Jones", "bob@example.com", observer);
-
-  classList.addStudent(s1);
-  classList.addStudent(s2);
-
-  // An example of calling startWorking and sending reminders
-  // Timing could vary in other tests!
-  classList.releaseAssignmentsParallel(["A1", "A2"]).then(() => {
-    s1.startWorking("A1");
-    s2.startWorking("A2");
-
-    setTimeout(() => classList.sendReminder("A1"), 200);
-  });
 }
